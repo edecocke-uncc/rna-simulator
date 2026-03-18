@@ -1,1 +1,40 @@
-a
+name: rna-simulator
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+dependencies:
+  - _openmp_mutex=4.5=7_kmp_llvm
+  - biopython=1.86=py311hc949640_1
+  - bzip2=1.0.8=hd037594_9
+  - ca-certificates=2026.2.25=hbd8a1cb_0
+  - icu=78.3=hef89b57_0
+  - libblas=3.11.0=5_h51639a9_openblas
+  - libcblas=3.11.0=5_hb0561ab_openblas
+  - libcxx=22.1.1=h55c6f16_0
+  - libexpat=2.7.4=hf6b4638_0
+  - libffi=3.5.2=hcf2aa1b_0
+  - libgcc=15.2.0=hcbb3090_18
+  - libgfortran=15.2.0=h07b0088_18
+  - libgfortran5=15.2.0=hdae7583_18
+  - liblapack=3.11.0=5_hd9741b5_openblas
+  - liblzma=5.8.2=h8088a28_0
+  - libopenblas=0.3.30=openmp_ha158390_4
+  - libsqlite=3.52.0=h1ae2325_0
+  - libzlib=1.3.1=h8359307_2
+  - llvm-openmp=22.1.0=hc7d1edf_0
+  - ncurses=6.5=h5e97a16_3
+  - numpy=2.4.3=py311h49b76aa_0
+  - openssl=3.6.1=hd24854e_1
+  - packaging=26.0=pyhcf101f3_0
+  - pip=26.0.1=pyh8b19718_0
+  - python=3.11.15=h8561d8f_0_cpython
+  - python_abi=3.11=8_cp311
+  - readline=8.3=h46df422_0
+  - setuptools=82.0.1=pyh332efcf_0
+  - tk=8.6.13=h010d191_3
+  - tzdata=2025c=hc9c84f9_1
+  - wheel=0.46.3=pyhd8ed1ab_0
+prefix: /opt/anaconda3/envs/rna-simulator
