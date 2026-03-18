@@ -9,12 +9,31 @@
 ### Dependency Requirements:
   - python=3.10
   - numpy
+  - 
 ### Installation: Cloning, conda setup, verification
+
 ### Usage: How to run with examples
-6. Command-Line Arguments: All flags and
-defaults
-7. Output Format: FASTA format with example
-8. Project Structure: Directory layout explanation
+
+### Command-Line Arguments: All flags and defaults
+
+### Output Format: FASTA format with example
+
+### Project Structure: Directory layout explanation
+```bash
+rna-simulator/
+├── README.md 
+├── LICENSE 
+├── pseudocode.txt 
+├── environment.yml 
+├── src/
+│ ├── __init__.py 
+│ ├── main.py ✓
+│ ├── simulator.py 
+│ └── sequence_lib.py 
+└── examples/
+ ├── example_output.fasta 
+ └── example_run.txt
+```
 9. Algorithm Description: How sequences are
 generated
 10. Metadata: How GC and ambiguity are calculated
