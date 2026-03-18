@@ -9,7 +9,7 @@
 ### Dependency Requirements:
   - python=3.10
   - numpy
-  - 
+  - Biopython
 ### Installation: Cloning, conda setup, verification
 
 ### Usage: How to run with examples
