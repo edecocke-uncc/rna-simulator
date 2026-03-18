@@ -27,7 +27,7 @@ rna-simulator/
 ├── environment.yml 
 ├── src/
 │ ├── __init__.py 
-│ ├── main.py ✓
+│ ├── main.py 
 │ ├── simulator.py 
 │ └── sequence_lib.py 
 └── examples/
