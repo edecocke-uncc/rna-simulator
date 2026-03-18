@@ -10,12 +10,62 @@
   - python=3.10
   - numpy
   - Biopython
-### Installation: Cloning, conda setup, verification
+### Installation
+### Setup
+1. Clone the repository:
+```bash
+git clone https://github.com/edecocke-uncc/rna-simulator.git
+```
+2. Go into your project folder:
+```bash
+cd rna-simulator
+```
+3. Environment Setup
+This project uses a Conda environment to manage dependencies.
 
-### Usage: How to run with examples
+4. Create the Environment: 
+```bash
+conda env create -f environment.yml
+```
+5. Activate the Environment
+```bash
+conda activate rna-simulator
+```
+
+### Usage Examples:
+Example 1: Default parameters
+```bash
+python src/main.py
+```
+Output:
+  - Successfully generated 10 sequences
+  - Output saved to: sequences.fasta
+
+Example 2: Specify output file
+```bash
+python src/main.py -o test.fasta
+```
+Output:
+  - Successfully generated 10 sequences
+  - Output saved to 'test.fasta'
+
+Example 3: Custom parameters
+```bash
+python src/main.py -n 50 -o my_seqs.fasta --min-length 200 --max-length 2000
+```
+Output:
+  - Successfully generated 50 sequences
+  - Output saved to: my_seqs.fasta
 
 ### Command-Line Arguments: All flags and defaults
-
+Arguments:
+  - --num-sequences / -n: Number of sequences(default: 10)
+  - --output / -o: Output FASTA file (default:sequences.fasta)
+  - --min-length: Minimum ORF length (default: 100)
+  - --max-length: Maximum ORF length (default:1000)
+  - --flanking-prob: Flanking probability 0-1 (default: 0.5)
+  - --flanking-length: Flanking sequence length (default: 50)
+  - --completeness: Ratio of complete ORFs 0-1 (default: 0.7)
 ### Output Format: FASTA format with example
 
 ### Project Structure: Directory layout explanation
