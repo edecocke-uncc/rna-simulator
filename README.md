@@ -33,7 +33,7 @@ conda activate rna-simulator
 ```
 
 ### Usage Examples:
-Example 1: Default parameters
+**Example 1: Default parameters**
 ```bash
 python src/main.py
 ```
@@ -41,7 +41,7 @@ Output:
   - Successfully generated 10 sequences
   - Output saved to: sequences.fasta
 
-Example 2: Specify output file
+**Example 2: Specify output file**
 ```bash
 python src/main.py -o test.fasta
 ```
@@ -49,7 +49,7 @@ Output:
   - Successfully generated 10 sequences
   - Output saved to 'test.fasta'
 
-Example 3: Custom parameters
+**Example 3: Custom parameters**
 ```bash
 python src/main.py -n 50 -o my_seqs.fasta --min-length 200 --max-length 2000
 ```
