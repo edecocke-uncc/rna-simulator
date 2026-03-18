@@ -20,12 +20,12 @@ generated
 10. Metadata: How GC and ambiguity are calculated
 
 ## References:
-IUPAC Codes: https://www.bioinformatics.org/sms/iupac.html
-FASTA Format: https://en.wikipedia.org/wiki/FASTA_format
-Open Reading Frames: https://en.wikipedia.org/wiki/Open_reading_frame
-Biopython: https://biopython.org/Python argparse: https://docs.python.org/3/library/argparse.html
-Python Type Hints: https://docs.python.org/3/library/typing.html
-PEP 8: https://www.python.org/dev/peps/pep-0008/
+- IUPAC Codes: https://www.bioinformatics.org/sms/iupac.html
+- FASTA Format: https://en.wikipedia.org/wiki/FASTA_format
+- Open Reading Frames: https://en.wikipedia.org/wiki/Open_reading_frame
+- Biopython: https://biopython.org/Python argparse: https://docs.python.org/3/library/argparse.html
+- Python Type Hints: https://docs.python.org/3/library/typing.html
+- PEP 8: https://www.python.org/dev/peps/pep-0008/
 
 ## License
 This project is licensed under the GNU GPL v2.1. Chosen for open collaboration, ease of edits, and public use.
