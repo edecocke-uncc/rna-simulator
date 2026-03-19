@@ -1,1 +1,132 @@
+PASS (Python RNA sequence simulator) Pseudocode
 
+DATA DEFINITIONS
+VALID_RNA = [A, U, G, C]
+AMBIGUOUS = [N, R, Y, S, W, K, M, B, D, H, V]
+START_CODON = AUG
+STOP_CODONS = [UAA, UAG, UGA]
+
+
+sequence_lib.py functions:
+get_gc_content(sequence):
+    - input: RNA string
+    - raise error if empty or invalid characters
+    - count all G and C nucleotides
+    - return (gc_count / total_length) * 100
+
+get_ambiguity_content(sequence):
+    - input: RNA string
+    - raise error if empty
+    - count all characters that appear in AMBIGUOUS set
+    - return (amb_count / total_length) * 100
+
+generate_random_codon():
+    - no input
+    - pick 3 random nucleotides from VALID_RNA
+    - return joined string (e.g. "AUG")
+
+is_start_codon(codon):
+    - input: 3-char string
+    - raise error if length != 3
+    - return True if codon == "AUG", else False
+
+is_stop_codon(codon):
+    - input: 3-char string
+    - raise error if length != 3
+    - return True if codon in STOP_CODONS, else False
+
+generate_random_sequence(length, ambiguity_rate=0.0):
+    - input: desired length, optional ambiguity rate (0 to 1)
+    - raise error if length <= 0
+    - for each position:
+        - if random draw < ambiguity_rate, pick from AMBIGUOUS
+        - else pick from VALID_RNA
+    - return joined sequence string
+
+write_fasta(sequences, output_file):
+    - input: list of (id, description, sequence) tuples, output path
+    - raise error if list is empty
+    - open file for writing
+    - for each tuple:
+        - write ">id description"
+        - write sequence on next line
+
+
+SIMULATOR CLASS (simulator.py)
+Class attributes:
+    - num_sequences: how many sequences to generate
+    - min_orf_length: minimum number of codons in ORF
+    - max_orf_length: maximum number of codons in ORF
+    - flanking_probability: chance (0-1) of adding flanking regions
+    - flanking_length: nucleotide length of each flanking region
+    - completeness_ratio: fraction of sequences that will be complete ORFs
+
+__init__(all parameters):
+    - validate all inputs, raise ValueError if anything is out of range
+    - store everything as instance variables
+
+generate_orf(complete=True):
+    - input: boolean for complete vs partial
+    - pick random codon count between min and max orf length
+    - if complete:
+        - start with AUG
+        - generate (codon_count - 2) random codons for the middle
+        - pick a random stop codon
+        - return AUG + middle + stop
+    - if partial:
+        - return a random sequence of (codon_count * 3) nucleotides
+
+generate_sequence():
+    - no input
+    - randomly decide if ORF is complete based on completeness_ratio
+    - generate the ORF using generate_orf()
+    - randomly decide if flanking regions are added based on flanking_probability
+    - if flanked:
+        - generate left and right flanking sequences using generate_random_sequence()
+        - return left + orf + right
+    - else return just the orf
+
+generate_sequences():
+    - no input
+    - loop from 1 to num_sequences:
+        - call generate_sequence() to get the sequence
+        - calculate gc using get_gc_content()
+        - calculate ambiguity using get_ambiguity_content()
+        - determine type: "complete" if sequence starts with AUG, else "partial"
+        - determine flanked: "yes" if length > max_orf_length * 3, else "no"
+        - build description string with all metadata
+        - append (seq_id, description, sequence) to results list
+    - return results
+
+save_fasta(output_file):
+    - input: output file path
+    - call generate_sequences() to get all sequences
+    - pass results to write_fasta()
+
+
+main.py:
+create_parser():
+    - I think this just sets up all the argparse arguments with defaults:
+        - num_sequences: default 10
+        - output: default "sequences.fasta"
+        - min_length: default 100
+        - max_length: default 1000
+        - flanking_prob: default 0.5
+        - flanking_length: default 50
+        - completeness: default 0.7
+    - return the configured parser
+
+validate_arguments(args):
+    - I think checking things like:
+        - min_length <= max_length
+        - probabilities are between 0 and 1
+        - num_sequences > 0
+    - raise ValueError if anything fails
+
+main():
+    - parse arguments using create_parser()
+    - validate with validate_arguments()
+    - create Simulator instance with parsed args
+    - call save_fasta() with output file path
+    - print success message to stdout
+    - return 0 on success, 1 on error
