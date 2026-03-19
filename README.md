@@ -65,7 +65,7 @@ Arguments:
   - --flanking-prob: Flanking probability 0-1 (default: 0.5)
   - --flanking-length: Flanking sequence length (default: 50)
   - --completeness: Ratio of complete ORFs 0-1 (default: 0.7)
-  - --ambiguity-rate AMBIGUITY_RATE
+  - --ambiguity-rate: Probability of ambiguous bases (0-1, default: 0.0)
 ### Output Format
 ```bash
 >seq_003 length=585 GC=52.80% amb=1.20% type=complete flanked=no
