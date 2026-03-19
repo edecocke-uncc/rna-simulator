@@ -32,8 +32,8 @@ def get_gc_content(sequence: str) -> float:
     if not sequence:
         raise ValueError("Sequence cannot be empty")
 
-    sequence = sequence.upper()
-    if any(n not in VALID_RNA for n in sequence):
+    sequence = sequence.upper() 
+    if any(n not in VALID_RNA and n not in AMBIGUOUS for n in sequence):
         raise ValueError("Invalid RNA sequence")
 
     gc_count = sum(1 for n in sequence if n in {"G", "C"})
@@ -125,27 +125,28 @@ def is_stop_codon(codon: str) -> bool:
     return codon.upper() in {"UAA", "UAG", "UGA"}
 
 
-def generate_random_sequence(length: int) -> str:
+def generate_random_sequence(length: int, ambiguity_rate: float = 0.0) -> str:
     """
-    Generate a random RNA sequence.
+    Generate a random RNA sequence with optional ambiguity.
 
     Args:
         length: Length of sequence
+        ambiguity_rate: Probability (0–1) of inserting ambiguous bases
 
     Returns:
-        str: Random RNA sequence
-
-    Raises:
-        ValueError: If length <= 0
-
-    Example:
-        >>> generate_random_sequence(5)
-        'AUGCU'
+        str: RNA sequence
     """
     if length <= 0:
         raise ValueError("Length must be positive")
 
-    return "".join(random.choice(list(VALID_RNA)) for _ in range(length))
+    sequence = []
+    for _ in range(length):
+        if random.random() < ambiguity_rate:
+            sequence.append(random.choice(list(AMBIGUOUS)))
+        else:
+            sequence.append(random.choice(list(VALID_RNA)))
+
+    return "".join(sequence)
 
 
 def write_fasta(sequences: List[Tuple[str, str, str]], output_file: str) -> None:
