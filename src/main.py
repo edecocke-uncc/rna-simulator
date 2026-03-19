@@ -73,6 +73,13 @@ def create_parser() -> argparse.ArgumentParser:
         help="Ratio of complete ORFs (0-1, default: 0.7)"
     )
 
+    parser.add_argument(
+        "--ambiguity-rate",
+        type=float,
+        default=0.0,
+        help="Probability of ambiguous bases (0-1, default: 0.0)"
+    )
+
     return parser
 
 
@@ -107,6 +114,9 @@ def validate_arguments(args: argparse.Namespace) -> None:
     if not (0 <= args.completeness <= 1):
         raise ValueError("completeness must be between 0 and 1")
 
+    if not (0 <= args.ambiguity_rate <= 1):
+        raise ValueError("ambiguity-rate must be between 0 and 1")
+
 
 def main() -> None:
     """
@@ -128,6 +138,7 @@ def main() -> None:
             flanking_probability=args.flanking_prob,
             flanking_length=args.flanking_length,
             completeness_ratio=args.completeness,
+            ambiguity_rate=args.ambiguity_rate,
         )
 
         sim.save_fasta(args.output)
