@@ -104,17 +104,17 @@ rna-simulator/
 
 ### Metadata:
 Each sequence in the FASTA output is annotated in its header line with the following fields, all computed in sequence_lib.py:
-**length** is the total nucleotide count of the final sequence (ORF + any flanking regions).
-**GC** is the percentage of G and C nucleotides in the sequence, calculated as:
+  - **length** is the total nucleotide count of the final sequence (ORF + any flanking regions).
+  - **GC** is the percentage of G and C nucleotides in the sequence, calculated as:
 ```bash
   GC% = (count of G + C) / total length × 100
 ```
-**amb** is the percentage of IUPAC ambiguity characters (e.g., N, R, Y, S, W, K, M, B, D, H, V) in the sequence, calculated as:
+  - **amb** is the percentage of IUPAC ambiguity characters (e.g., N, R, Y, S, W, K, M, B, D, H, V) in the sequence, calculated as:
 ```bash
   ambiguity% = (count of ambiguous bases) / total length × 100
 ```
-**type** is determined by inspecting the first three nucleotides of the sequence. If they equal AUG, the type is labeled complete; otherwise, it is labeled partial.
-**flanked** is determined by comparing the final sequence length against the core ORF length. If the total length exceeds the ORF-only length, flanking regions were added and the field is labeled yes; otherwise it is labeled no.
+  - **type** is determined by inspecting the first three nucleotides of the sequence. If they equal AUG, the type is labeled complete; otherwise, it is labeled partial.
+  - **flanked** is determined by comparing the final sequence length against the core ORF length. If the total length exceeds the ORF-only length, flanking regions were added and the field is labeled yes; otherwise it is labeled no.
 
 ## References:
 - IUPAC Codes: https://www.bioinformatics.org/sms/iupac.html
