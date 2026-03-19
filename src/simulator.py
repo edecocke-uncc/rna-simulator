@@ -134,7 +134,7 @@ class Simulator:
                 f"flanked={flanked}"
             )
 
-            results.append((f"seq{i}", desc, seq))
+            results.append((f"seq_{i:03d}", desc, seq))
 
         return results
 
