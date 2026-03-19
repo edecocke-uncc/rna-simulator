@@ -100,7 +100,18 @@ rna-simulator/
  └── example_run.txt
 ```
 ## Algorithm Description: 
+Sequence generation is handled by the Simulator class in simulator.py and follows this logic for each sequence:
 
+1. To determine ORF type a random draw against completeness_ratio decides whether the sequence will be a complete or partial ORF.
+2. Then to build the ORF:
+
+  - If they are complete sequences then the sequence begins with the start codon AUG, is filled with randomly generated codons (each nucleotide drawn uniformly from {A, U, G, C}), and ends with a randomly chosen stop codon. The number of internal codons is sampled uniformly between min_orf_length and max_orf_length.
+  - If they are partial sequences a random RNA sequence of equivalent nucleotide length is generated with no enforced start or stop codon.
+
+3. When adding flanking regions, a random draw against flanking_probability determines whether non-coding flanking sequence is added. If so, two random RNA sequences of flanking_length nucleotides are generated and prepended/appended to the ORF.
+4. Repeat for the requested number of sequences.
+
+Individual nucleotides are generated in sequence_lib.py using random.choice over the set {A, U, G, C}, with optional IUPAC ambiguity characters inserted.
 
 ### Metadata:
 Each sequence in the FASTA output is annotated in its header line with the following fields, all computed in sequence_lib.py:
