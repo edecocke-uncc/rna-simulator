@@ -30,6 +30,7 @@ class Simulator:
         flanking_probability: float,
         flanking_length: int,
         completeness_ratio: float,
+        ambiguity_rate: float = 0.0,
     ) -> None:
         """
         Initialize the Simulator.
