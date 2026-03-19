@@ -68,7 +68,7 @@ Output:
   - Successfully generated 50 sequences
   - Output saved to: my_seqs.fasta
 
-### Command-Line Arguments: All flags and defaults
+### Command-Line Arguments: 
 Arguments:
   - --num-sequences / -n: Number of sequences(default: 10)
   - --output / -o: Output FASTA file (default:sequences.fasta)
