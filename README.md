@@ -6,10 +6,14 @@ PASS (Python RNA sequence simulator) is a tool that generates synthetic RNA sequ
 ### Features:
   - Flexible ORF generation:
     - produces complete ORFs (AUG → stop codon) or partial sequences of configurable length
-  - Non-coding flanking regions: randomly appends upstream/downstream flanking sequences with tunable probability
-  - Configurable output: controls sequence count, length range, completeness ratio, and flanking behavior via command-line arguments
-  - Sequence metadata: each FASTA header includes length, GC content (%), ambiguity content (%), ORF type, and flanked status
-  - IUPAC ambiguity support: sequences may contain standard ambiguity codes
+  - Non-coding flanking regions:
+    - randomly appends upstream/downstream flanking sequences with tunable probability
+  - Configurable output:
+    - controls sequence count, length range, completeness ratio, and flanking behavior via command-line arguments
+  - Sequence metadata:
+    - each FASTA header includes length, GC content (%), ambiguity content (%), ORF type, and flanked status
+  - IUPAC ambiguity support:
+    - sequences may contain standard ambiguity codes
 
 ## Usage 
 ### Dependency Requirements:
