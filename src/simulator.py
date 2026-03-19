@@ -56,6 +56,8 @@ class Simulator:
             raise ValueError("flanking_length must be >= 0")
         if not (0 <= completeness_ratio <= 1):
             raise ValueError("completeness_ratio must be between 0 and 1")
+        if not (0 <= ambiguity_rate <= 1):
+            raise ValueError("ambiguity_rate must be between 0 and 1")  
 
         self.num_sequences = num_sequences
         self.min_orf_length = min_orf_length
@@ -63,6 +65,7 @@ class Simulator:
         self.flanking_probability = flanking_probability
         self.flanking_length = flanking_length
         self.completeness_ratio = completeness_ratio
+        self.ambiguity_rate = ambiguity_rate
 
 
     def generate_orf(self, complete: bool = True) -> str:
@@ -100,8 +103,8 @@ class Simulator:
         orf = self.generate_orf(complete=is_complete)
 
         if random.random() < self.flanking_probability:
-            left = generate_random_sequence(self.flanking_length)
-            right = generate_random_sequence(self.flanking_length)
+            left = generate_random_sequence(self.flanking_length, self.ambiguity_rate)
+            right = generate_random_sequence(self.flanking_length, self.ambiguity_rate)
             return left + orf + right
 
         return orf
