@@ -1,1 +1,28 @@
+Example 1: Default parameters
+$ python src/main.py
+Output:
+- Successfully generated 10 sequences
+- Output saved to: sequences.fasta
 
+Example 2: Specify output file
+$ python src/main.py -o test.fasta
+Output:
+- Successfully generated 10 sequences
+- Output saved to 'test.fasta'
+
+Example 3: Custom parameters
+$ python src/main.py -n 50 -o my_seqs.fasta --min-length 200 --max-length 2000
+Output:
+- Successfully generated 50 sequences
+- Output saved to: my_seqs.fasta
+
+Example 4: Introducing ranges
+$ python src/main.py --min-length 200 --max-length 500 
+Output:
+- Successfully generated 10 sequences
+- Output saved to: 'sequences.fasta'
+
+Example 5: Example error
+$ python src/main.py --min-length 1000 --max-length 100 
+Output:
+- Error: max-length must be >= min-length
