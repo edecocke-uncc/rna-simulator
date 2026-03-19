@@ -20,6 +20,7 @@ PASS (Python RNA sequence simulator) is a tool that generates synthetic RNA sequ
   - python=3.10
   - numpy
   - Biopython
+
 ### Installation
 ### Setup
 1. Clone the repository:
@@ -77,6 +78,7 @@ Arguments:
   - --flanking-length: Flanking sequence length (default: 50)
   - --completeness: Ratio of complete ORFs 0-1 (default: 0.7)
   - --ambiguity-rate: Probability of ambiguous bases (0-1, default: 0.0)
+
 ### Output Format
 ```bash
 >seq_003 length=585 GC=52.80% amb=1.20% type=complete flanked=no
@@ -142,5 +144,3 @@ This project is licensed under the GNU GPL v2.1. Chosen for open collaboration, 
 - Erin Nicole Decocker
 - edecocke@charlotte.edu
 - ID: 801442694
-Include at least 3 example commands showing
-different use cases.
